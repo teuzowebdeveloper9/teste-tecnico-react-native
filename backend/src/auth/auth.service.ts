@@ -6,7 +6,7 @@ import { SigninDTO } from 'DTOs/signinDTO';
 import { PrismaOrmService } from 'src/prisma-orm/prisma-orm.service';
 import { NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import { hashPassword } from 'src/utils/HashThePassword';
+import { HashPassword } from 'src/utils/HashThePassword';
 
 
 @Injectable()
@@ -16,25 +16,24 @@ export class AuthService {
 
 
   async Signup (Data: signupDTO){
+     if(Data.confirmPassword != Data.password){
+      throw new BadRequestException(
+         'Something is wrong, check the information you sent',
+      )
+     }
+     
+     const hashedPassword = await HashPassword(Data.password)
 
     const User = await this.prismaService.usuario.create({
       data: {
         email: Data.email,
-        password: Data.password,
+        password: hashedPassword,
       }
     })
     
     if(!User){
       throw new BadRequestException("um erro desconhecido aconteceu tente novamente")
     }
-
-     if(Data.confirmPassword != Data.password){
-      throw new BadRequestException(
-         'Something is wrong, check the information you sent',
-      )
-     }
-
-     hashPassword(User.password)
 
      const payload = {email : Data.email, password : Data.password}
      const acess_token = this.jwtService.sign(payload)
@@ -58,7 +57,7 @@ export class AuthService {
 
     const isPasswordValid = await bcrypt.compare(Data.password, User.password);
        if (!isPasswordValid) {
-    throw new BadRequestException('Senha inválida');
+    throw new BadRequestException("the credentials provided are incorrect");
    }
 
     const payload = {email : Data.email, password : Data.password}
