@@ -5,6 +5,9 @@ import { BadRequestException } from '@nestjs/common';
 import { SigninDTO } from 'DTOs/signinDTO';
 import { PrismaOrmService } from 'src/prisma-orm/prisma-orm.service';
 import { NotFoundException } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
+import { hashPassword } from 'src/utils/HashThePassword';
+
 
 @Injectable()
 export class AuthService {
@@ -30,6 +33,9 @@ export class AuthService {
          'Something is wrong, check the information you sent',
       )
      }
+
+     hashPassword(User.password)
+
      const payload = {email : Data.email, password : Data.password}
      const acess_token = this.jwtService.sign(payload)
 
@@ -48,6 +54,11 @@ export class AuthService {
 
    if(!User){
       throw new NotFoundException("We did not find this user, you can try to create an account if you do not have one or check the information provided.")
+   }
+
+    const isPasswordValid = await bcrypt.compare(Data.password, User.password);
+       if (!isPasswordValid) {
+    throw new BadRequestException('Senha inválida');
    }
 
     const payload = {email : Data.email, password : Data.password}
