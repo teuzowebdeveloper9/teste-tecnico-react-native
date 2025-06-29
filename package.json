@@ -18,8 +18,10 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
+    "@radix-ui/react-dialog": "^1.1.14",
     "@react-native-async-storage/async-storage": "^2.2.0",
     "@react-navigation/native": "^6.0.2",
+    "ai": "^4.3.16",
     "axios": "^1.10.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
