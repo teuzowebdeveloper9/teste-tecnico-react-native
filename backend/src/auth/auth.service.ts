@@ -7,8 +7,6 @@ import { PrismaOrmService } from 'src/prisma-orm/prisma-orm.service';
 import { NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { HashPassword } from 'src/utils/HashThePassword';
-import { sendMail } from 'src/utils/mailman';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {

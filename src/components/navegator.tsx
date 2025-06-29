@@ -13,12 +13,12 @@ export default function Navigator() {
   const { selectedTab, setSelectedTab } = useNavigationTab();
 
   return (
-    <View className="bg-white absolute bottom-0 border-t border-gray-200 w-screen h-[101px] justify-center items-center">
+    <View className="bg-white absolute bottom-0 border-t border-gray-200 w-screen h-[90px] justify-center items-center">
       <View className="flex flex-row justify-around w-full">
         <Link href="/chat" asChild>
           <TouchableOpacity onPress={() => setSelectedTab('chat')}>
             <Image
-              className="w-[50px] h-[50px]"
+              className="w-[30px] h-[30px]"
               source={selectedTab === 'chat' ? chatAISelected : chatAI}
             />
           </TouchableOpacity>
@@ -27,7 +27,7 @@ export default function Navigator() {
         <Link href="/home" asChild>
           <TouchableOpacity onPress={() => setSelectedTab('home')}>
             <Image
-              className="w-[50px] h-[50px]"
+              className="w-[30px] h-[30px]"
               source={selectedTab === 'home' ? IconInicioSelected : IconInicio}
             />
           </TouchableOpacity>
@@ -36,7 +36,7 @@ export default function Navigator() {
         <Link href="/config" asChild>
           <TouchableOpacity onPress={() => setSelectedTab('config')}>
             <Image
-              className="w-[50px] h-[50px]"
+              className="w-[30px] h-[30px]"
               source={selectedTab === 'config' ? configIconSelected : configIcon}
             />
           </TouchableOpacity>

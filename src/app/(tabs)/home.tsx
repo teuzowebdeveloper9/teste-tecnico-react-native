@@ -5,7 +5,7 @@ import { View,Text } from "react-native";
 export default function Home (){
   return(
     <NavigationProvider>
-        <View className="h-screen w-screen bg-white">
+        <View className="h-[850px] w-screen bg-white">
           <Navigator />
          </View>
     </NavigationProvider>

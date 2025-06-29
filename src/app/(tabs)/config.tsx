@@ -5,7 +5,7 @@ import { View,Text } from "react-native";
 export default function Config(){
  return(
   <NavigationProvider>
-    <View className="bg-black h-screen w-screen">
+    <View className="bg-black h-[850px] w-screen">
       <Text>
       esta na config 
       </Text>

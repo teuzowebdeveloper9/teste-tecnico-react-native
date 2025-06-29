@@ -12,7 +12,7 @@ import { ChatbotModule } from './chatbot/chatbot.module';
   imports: [
      ConfigModule.forRoot({
       isGlobal: true, 
-      envFilePath: '.env', 
+       envFilePath: '.env', 
     }),
     AuthModule,
     ChatbotModule],

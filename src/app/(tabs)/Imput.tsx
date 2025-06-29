@@ -9,16 +9,32 @@ import {
   Pressable,
   Text
 } from "react-native";
-import Navigator from "./navegator";
-import send from '../../images/elements.png'
+import Navigator from "../../components/navegator";
+import send from '../../../images/elements.png'
 import { useState } from "react";
-import { handleChat } from "../utils/handleChat";
+import { handleChat } from "../../utils/handleChat";
+import { useChatContext } from "../../contexts/ChatContext";
 
 
 
-export default function BaseChat(){
 
-    const [chat,setChat] = useState("")
+export default function BaseChat() {
+  const [chat, setChat] = useState("");
+  const { addMessage } = useChatContext(); 
+
+  const sendMessage = async () => {
+    if (!chat.trim()) return;
+
+    addMessage({ role: "user", content: chat });
+
+    const aiResponse = await handleChat(chat);
+
+    addMessage({ role: "ia", content: aiResponse });
+
+    setChat("");
+  };
+
+
  return(
     <View className="flex-1  bg-gray-100">
         <KeyboardAvoidingView
@@ -38,7 +54,7 @@ export default function BaseChat(){
                  placeholder="oque tem na sua mente ?"
                  className="flex-1 p-4"
             />
-            <Pressable onPress={async () => {await handleChat(chat) , setChat("")}} >
+            <Pressable onPress={sendMessage}>
               <Image   source={send} className="h-[19px] w-[19px]"/>
             </Pressable>
             
@@ -53,4 +69,8 @@ export default function BaseChat(){
    
  )
 
+}
+
+function addMessage(arg0: { role: string; content: string; }) {
+  throw new Error("Function not implemented.");
 }
