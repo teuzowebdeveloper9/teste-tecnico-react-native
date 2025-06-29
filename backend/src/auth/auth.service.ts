@@ -29,7 +29,7 @@ export class AuthService {
      
      const hashedPassword = await HashPassword(Data.password)
 
-    const User = await this.prismaService.usuario.create({
+    const User = await this.prismaService.user.create({
       data: {
         email: Data.email,
         password: hashedPassword,
@@ -51,7 +51,7 @@ export class AuthService {
 
   async Signin(Data : SigninDTO){
 
-   const User = await this.prismaService.usuario.findUnique({
+   const User = await this.prismaService.user.findUnique({
      where : {
       email : Data.email
      }
