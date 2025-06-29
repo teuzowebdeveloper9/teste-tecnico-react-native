@@ -7,12 +7,19 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   View,
+  Image,
+  Pressable
 } from "react-native";
+import send from '../../../images/elements.png'
+import { handleChat } from "@/src/utils/handleChat";
+import { useState } from "react";
 
 export default function Chat() {
+
+  const [chat, setChat] = useState("")
   return (
     <NavigationProvider>
-      <View className="flex-1 bg-gray-100">
+      <View className="flex-1  bg-gray-100">
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           className="flex-1"
@@ -21,12 +28,20 @@ export default function Chat() {
             <View className="flex-1">
             </View>
           </TouchableWithoutFeedback>
-
-          <View className="absolute left-0 right-0 bottom-16 px-4">
-            <TextInput
-              placeholder="Type here..."
-              className="border border-gray-400 p-4 rounded bg-white"
+           
+          <View className="flex-1 justify-end pb-32 px-5">
+            <View className="flex-row items-center border border-white rounded-sm bg-gray-300 px-3">
+              <TextInput
+                 value={chat}
+                 onChangeText={setChat}
+                 placeholder="Type here..."
+                 className="flex-1 p-4"
             />
+            <Pressable onPress={() => handleChat(chat)}>
+              <Image  source={send} className="h-[19px] w-[19px]"/>
+            </Pressable>
+            
+            </View>
           </View>
         </KeyboardAvoidingView>
 
