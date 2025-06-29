@@ -7,20 +7,27 @@ import { PrismaOrmService } from 'src/prisma-orm/prisma-orm.service';
 import { NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { HashPassword } from 'src/utils/HashThePassword';
-
+import { sendMail } from 'src/utils/mailman';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
   
-  constructor(private jwtService: JwtService, private prismaService : PrismaOrmService) {}
+  constructor(private jwtService: JwtService,
+     private prismaService : PrismaOrmService,) {
+      
+     }
 
+  
 
   async Signup (Data: signupDTO){
+
      if(Data.confirmPassword != Data.password){
       throw new BadRequestException(
          'Something is wrong, check the information you sent',
       )
      }
+     
      
      const hashedPassword = await HashPassword(Data.password)
 
@@ -35,6 +42,7 @@ export class AuthService {
       throw new BadRequestException("um erro desconhecido aconteceu tente novamente")
     }
 
+    
      const payload = {email : Data.email, password : Data.password}
      const acess_token = this.jwtService.sign(payload)
 

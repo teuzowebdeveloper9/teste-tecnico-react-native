@@ -1,0 +1,1 @@
+export type NavigationTab = 'chat' | 'home' | 'config' 

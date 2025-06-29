@@ -3,7 +3,6 @@ import { View, Image, TextInput, Text, Pressable, Alert, Modal } from "react-nat
 import "../../../global.css";
 import { Link, router } from "expo-router";
 import { useState } from "react";
-import check from "../../../images/check.png";
 import { hadleLogin } from "@/src/utils/handleLogin";
 import { SuccessModal } from "@/src/components/sucessModal";
 
@@ -45,7 +44,7 @@ export default function Login() {
   visible={successModalVisible}
   onClose={() => {
     setSuccessModalVisible(false);
-    router.push("/");
+    router.push("/home");
   }}
 />
     </View>

@@ -40,7 +40,7 @@ export default function Login(){
   visible={successModalVisible}
   onClose={() => {
     setSuccessModalVisible(false);
-    router.push("/");
+    router.push("/home");
   }}
 />
      </View>
