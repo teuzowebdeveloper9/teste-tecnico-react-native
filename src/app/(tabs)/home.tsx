@@ -8,7 +8,7 @@ export default function Home (){
   return(
     <NavigationProvider>
          <HomeHeader />
-         <RegisterActivity  value={31} max={30} />
+         <RegisterActivity   max={30} />
          <Activities />
           <Navigator /> 
     </NavigationProvider>

@@ -1,5 +1,5 @@
 import fitnessLogo from "../../../images/Logo.png";
-import { View, Image, TextInput, Text, Pressable, Alert, Modal } from "react-native";
+import { View, Image, TextInput, Text, Pressable } from "react-native";
 import "../../../global.css";
 import { Link, router } from "expo-router";
 import { useState } from "react";

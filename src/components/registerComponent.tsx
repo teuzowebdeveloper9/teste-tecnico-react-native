@@ -1,23 +1,39 @@
 import { View } from "react-native";
-
-type RegisterActivityProps = {
-  value: number;
-  max: number;
-};
+import { RegisterActivityProps } from "../types/RegisterActivity";
+import { useEffect, useState } from "react";
 
 
-export default function RegisterActivity ({ value, max }: RegisterActivityProps){
+
+
+export default function RegisterActivity ({  max }: RegisterActivityProps){
+
+  const [numberActivity,setNumberActivity] = useState(0)
+
+  
+useEffect(() => {
+    fetch("http://localhost:3333/activity/")
+      .then((response) => response.json())
+      .then((data) => {
+        setNumberActivity(data.length)
+
+      })
+      .catch((error) => {
+        console.error("error on get the activities", error);
+      });
+  }, []);
+
+
   const Radius = 40
   const Stroke = 10
   const NormalizedRadius = Radius - Stroke/2
   const circunference = NormalizedRadius * Math.PI 
 
-  const Percetage = Math.min(value/max,1)
+  const Percetage = Math.min(numberActivity/max,1)
   const strokeDashoffset = circunference - Percetage * circunference;
 
 
   return(
-    <View className="flex justify-center items-center h-[150px] w-full mt-2 mb-4 ml-8 bg-white">
+    <View className="flex justify-center items-center h-[250px] w-full mt-2 mb-4 rounded-sm bg-white">
        <svg height="100" width="100" viewBox="0 0 100 50">
       <path
         d="
@@ -47,7 +63,7 @@ export default function RegisterActivity ({ value, max }: RegisterActivityProps)
         fontSize="20"
         fill="#333"
       >
-        {value}
+        {numberActivity}
       </text>
       <text
         x="50"

@@ -1,6 +1,7 @@
 import { View, Text, Image, ScrollView, Pressable } from "react-native";
 import { useEffect, useState, useRef } from "react";
 import LottieView from 'lottie-react-native';
+import { Link } from "expo-router";
 import loadingAnimation from '../../animations/Animation - 1751313511924.json';
 import ArrowActivities from '../../images/arrowActivities.png';
 import { Activity } from "../types/ActiveType";
@@ -10,6 +11,7 @@ export default function Activities() {
   const [activities, setActivities] = useState<Activity[]>([]);
   const [loading, setLoading] = useState(true);
   const animationRef = useRef<LottieView>(null);
+  
 
   useEffect(() => {
     fetch("http://localhost:3333/activity/")
@@ -23,6 +25,8 @@ export default function Activities() {
         setLoading(false);
       });
   }, []);
+
+  
 
   return (
     <View className="h-[220px] w-full mr-4 bg-white border border-gray-300">
@@ -71,11 +75,12 @@ export default function Activities() {
           </ScrollView>
         </>
       )}
-         <Pressable>
-          <View className="h-[30px] w-full bg-black rounded-sm flex justify-center items-center">
+         <Link href={"/RegisterActivity"}>
+            <View className="h-[30px] w-full bg-black rounded-sm flex justify-center items-center">
             <Text className="font-semibold text-white">nova atividade</Text>
           </View>
-       </Pressable>
+         </Link>
+          
     </View>
   );
 }
