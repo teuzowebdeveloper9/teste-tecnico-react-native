@@ -21,13 +21,13 @@ export class ActivityService {
   }
    async DeleteActivity (id : string){
      const searchActivity = await this.prismaService.activity.findUnique({
-       where: { id },
+        where: { id },
      })
      if(!searchActivity){
       throw new BadRequestException("non-existent or not found activity")
     }
     await this.prismaService.activity.delete({
-      where: { id },
+       where: { id },
     })
 
      return;

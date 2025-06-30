@@ -6,6 +6,9 @@ import { ConfigModule } from '@nestjs/config';
 import { ChatbotController } from './chatbot/chatbot.controller';
 import { ChatbotService } from './chatbot/chatbot.service';
 import { ChatbotModule } from './chatbot/chatbot.module';
+import { ActivityController } from './activity/activity.controller';
+import { ActivityService } from './activity/activity.service';
+import { PrismaOrmModule } from './prisma-orm/prisma-orm.module';
 
 
 @Module({
@@ -15,8 +18,9 @@ import { ChatbotModule } from './chatbot/chatbot.module';
        envFilePath: '.env', 
     }),
     AuthModule,
-    ChatbotModule],
-  controllers: [AppController, ChatbotController],
-  providers: [AppService, ChatbotService],      
+    ChatbotModule,
+    PrismaOrmModule],
+  controllers: [AppController, ChatbotController,ActivityController],
+  providers: [AppService, ChatbotService,ActivityService],      
 })
 export class AppModule {}
