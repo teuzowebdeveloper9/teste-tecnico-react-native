@@ -13,3 +13,4 @@ services:
 
 volumes:
   native-app-data:
+cd backend
