@@ -17,7 +17,7 @@ export default function RegisterActivity ({ value, max }: RegisterActivityProps)
 
 
   return(
-    <View className="flex justify-center items-center h-[150px] w-[320px] mt-2 mb-4 ml-8 bg-gray-200">
+    <View className="flex justify-center items-center h-[150px] w-full mt-2 mb-4 ml-8 bg-white">
        <svg height="100" width="100" viewBox="0 0 100 50">
       <path
         d="
