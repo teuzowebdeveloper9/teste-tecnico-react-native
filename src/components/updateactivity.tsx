@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { Image, Modal, Pressable, Text, TextInput, View } from "react-native";
+import {  Image, Modal, Pressable, Text, TextInput, View } from "react-native";
 import { useActivities } from "@/src/contexts/ActivitiesContext";
 import { handleUpdateActivity } from "../utils/handleUpdateActivity";
 import { Picker } from "@react-native-picker/picker";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import closeModalActivity from '@/images/closeModalActivity.png'
-
+import exclude from "@/images/exclude.png"
 
 export default function FormUpdateActivity(){
+  
 
-    const {activity} = useActivities()
+    const {activity,getActivityById} = useActivities()
      const [visible,setVisible] = useState(true)
      const [itensidade,setIntensidade] = useState("")    
      const [duracao,setDuracao] = useState(0)
@@ -89,10 +90,21 @@ export default function FormUpdateActivity(){
         <Picker.Item label="Média" value="media" />
         <Picker.Item label="Pesada" value="pesada" />
       </Picker>
-      <Link href={"/(tabs)/home"}>
+       <Pressable onPress={() => {
+  if (activity?.id) {
+    getActivityById(activity.id);
+    setVisible(false)
+    router.push("/(tabs)/confirmExclude");
+  }
+}} className="flex-row mt-2 items-center justify-between bg-red-800 w-[194px] h-[30px] px-2 rounded">
 
+      <Text className="text-white text-sm">Excluir atividade</Text>
+      <Image source={exclude} className="h-[16px] w-[16px]" />
+    </Pressable>
+      <Link href={"/(tabs)/home"}>
+   
       <Pressable
-  className="mt-4 bg-black py-2 rounded-md"
+  className="mt-4 bg-black flex justify-center items-center w-[350px] py-2 rounded-md"
   onPress={async () => {
     if (!activity?.id) return; 
 
@@ -104,7 +116,7 @@ export default function FormUpdateActivity(){
     setVisible(false);
   }}
 >
-  <Text className="text-white text-center">Salvar alterações</Text>
+  <Text className="text-white text-center">editar atividade </Text>
 </Pressable>
       </Link>   
         

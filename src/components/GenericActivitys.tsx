@@ -1,6 +1,5 @@
-import { View, Text, ScrollView, Pressable,Modal,Image, TextInput } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import HomeHeader from './HomeHeader'
-import Activities from './Activities'
 import RegisterComponent from "@/src/components/registerComponent";
 import {  useActivities } from '../contexts/ActivitiesContext';
 
