@@ -57,7 +57,7 @@ export default function Activities() {
                     {activity.title}
                   </Text>
                    <Pressable onPress={() => getActivityById(activity.id)}>
-                    <Link href={"/(tabs)/EditActicity"}>
+                    <Link href={"/(tabs)/EditActivity"}>
                      <Image source={ArrowActivities} className="h-[20px]" />
                     </Link>
                    </Pressable>
