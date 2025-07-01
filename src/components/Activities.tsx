@@ -1,7 +1,7 @@
 import { View, Text, Image, ScrollView, Pressable } from "react-native";
 import { useEffect, useState, useRef } from "react";
 import LottieView from 'lottie-react-native';
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import loadingAnimation from '../../animations/Animation - 1751313511924.json';
 import ArrowActivities from '../../images/arrowActivities.png';
 import { Activity } from "../types/ActiveType";
@@ -56,11 +56,16 @@ export default function Activities() {
                   <Text className="text-gray-400 font-extralight">
                     {activity.title}
                   </Text>
-                   <Pressable onPress={() => getActivityById(activity.id)}>
-                    <Link href={"/(tabs)/EditActivity"}>
-                     <Image source={ArrowActivities} className="h-[20px]" />
-                    </Link>
-                   </Pressable>
+                  <Pressable
+                 onPress={async () => {
+                   await getActivityById(activity.id);
+                    router.push("/(tabs)/EditActivity");
+                     }}
+                      >
+                   <Image source={ArrowActivities} className="h-[20px]" />
+                 </Pressable>
+
+
                 
                 </View>
 

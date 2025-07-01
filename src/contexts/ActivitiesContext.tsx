@@ -26,8 +26,7 @@ export const ActivitiesProvider = ({ children }: { children: React.ReactNode }) 
     const foundActivity = activities.find((activity) => activity.id === id);
     if (foundActivity) {
       setActivity(foundActivity);
-    } else {
-      try {
+    } try {
         const response = await fetch(
           `http://localhost:3333/activity/${id}`
         );
@@ -35,7 +34,7 @@ export const ActivitiesProvider = ({ children }: { children: React.ReactNode }) 
         setActivity(activityData);
       } catch (error) {
         console.error("Error fetching activity by ID:", error);
-      }
+      
     }
   }
 

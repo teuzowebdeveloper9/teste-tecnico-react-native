@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image, Modal, Pressable, Text, TextInput, TextInputComponent, View } from "react-native";
+import { Image, Modal, Pressable, Text, TextInput, View } from "react-native";
 import { useActivities } from "@/src/contexts/ActivitiesContext";
 import { handleUpdateActivity } from "../utils/handleUpdateActivity";
 import { Picker } from "@react-native-picker/picker";
@@ -12,8 +12,9 @@ export default function FormUpdateActivity(){
     const {activity} = useActivities()
      const [visible,setVisible] = useState(true)
      const [itensidade,setIntensidade] = useState("")    
-     const [nameActivity,setNameActivity] = useState("")
      const [duracao,setDuracao] = useState(0)
+     const [nameActivity, setNameActivity] = useState("");
+
    return(
     
   <Modal
@@ -32,11 +33,12 @@ export default function FormUpdateActivity(){
              </Link>
           </View>
             <Text className='font-semibold'>nome</Text>
-             <TextInputComponent
-              className='rounded-sm p-2 border border-black'
-              placeholder={activity?.title}
-              onChangeText={setNameActivity}
-             />
+          <TextInput
+  className='rounded-sm p-2 border border-black'
+  placeholder={activity?.title}
+  value={nameActivity}
+  onChangeText={setNameActivity}
+/>
           <Text className='font-semibold'>Duração</Text>
              <Picker
         selectedValue={duracao}

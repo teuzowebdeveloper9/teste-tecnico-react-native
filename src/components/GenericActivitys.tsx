@@ -1,10 +1,8 @@
 import { View, Text, ScrollView, Pressable,Modal,Image, TextInput } from 'react-native'
-import { NavigationProvider } from '../contexts/NavigationContext'
 import HomeHeader from './HomeHeader'
 import Activities from './Activities'
 import RegisterComponent from "@/src/components/registerComponent";
-import { ActivitiesProvider, useActivities } from '../contexts/ActivitiesContext';
-import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from 'react';
+import {  useActivities } from '../contexts/ActivitiesContext';
 
 export default function GenericActivitys(){
   
