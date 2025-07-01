@@ -42,7 +42,7 @@ useEffect(() => {
         "
         fill="transparent"
         stroke="#e6e6e6"
-        strokeWidth={Stroke}
+        strokeWidth={Stroke}  
       />
       <path
         d="
