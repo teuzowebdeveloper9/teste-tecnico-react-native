@@ -5,8 +5,29 @@ import configImage from '@/images/configImage.png';
 import EditiconConfig from '@/images/editConfigName.png';
 import deleteAcount from '@/images/delete-config-acount.png'
 import exitAcount from "@/images/exitAcount.png"
+import { useContext } from "react";
+import { AuthContext } from "@/src/contexts/AuthContext";
+
 
 export default function Config() {
+   const authContext = useContext(AuthContext)
+
+    if (!authContext) {
+    // Você pode renderizar um indicador de carregamento ou um erro aqui
+    return (
+      <View className="flex-col justify-center items-center h-screen w-screen">
+        <Text>Carregando configurações...</Text>
+      </View>
+    );
+  }
+
+  const { email, signout } = authContext;
+
+  const handleSignOut = async () => {
+    await signout();
+  }; 
+
+
   return (
     <NavigationProvider>
       <View className="flex-col justify-center items-center gap-4 p-4 h-screen w-screen">
@@ -18,12 +39,12 @@ export default function Config() {
         </View>
 
         <View className="flex-row justify-between items-center w-full px-4">
-          <Text>nome :</Text>
+          <Text>nome : </Text>
           <Image source={EditiconConfig} />
         </View>
 
         <View className="flex-row justify-between items-center w-full px-4">
-          <Text>email :</Text>
+          <Text>email : {email}</Text>
           <Image source={EditiconConfig} />
         </View>
         <View className="w-full px-4">

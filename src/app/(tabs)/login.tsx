@@ -4,14 +4,12 @@ import "../../../global.css";
 import { Link, router } from "expo-router";
 import { useState } from "react";
 import { SuccessModal } from "@/src/components/sucessModal";
-import { useAuth } from "@/src/contexts/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [successModalVisible, setSuccessModalVisible] = useState(false);
 
-  const { signin } = useAuth();
 
   const handleLogin = async () => {
     try {
@@ -29,12 +27,7 @@ export default function Login() {
         throw new Error(data.message || "Invalid credentials");
       }
 
-      if (data?.acess_token) {
-        await signin(data.acess_token);
-        setSuccessModalVisible(true);
-      } else {
-        throw new Error("No token returned");
-      }
+     
 
     } catch (err) {
       console.error(err);

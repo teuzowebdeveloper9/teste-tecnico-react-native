@@ -4,7 +4,6 @@ import "../../../global.css";
 import { Link, router } from "expo-router";
 import { useState } from "react";
 import { SuccessModal } from "@/src/components/sucessModal";
-import { useAuth } from "@/src/contexts/AuthContext";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -12,7 +11,6 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [successModalVisible, setSuccessModalVisible] = useState(false);
 
-  const { signin } = useAuth();
 
   const handleRegister = async () => {
     try {
@@ -30,12 +28,7 @@ export default function Register() {
         throw new Error(data.message || "Erro ao criar conta");
       }
 
-      if (data?.acess_token) {
-        await signin(data.acess_token);
-        setSuccessModalVisible(true);
-      } else {
-        throw new Error("Nenhum token retornado");
-      }
+     
 
     } catch (err) {
       console.error(err);

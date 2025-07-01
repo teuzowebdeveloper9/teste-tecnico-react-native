@@ -1,48 +1,53 @@
-// src/contexts/AuthContext.tsx
-
-import React, { createContext, useState, useContext, ReactNode, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
-import { AuthContextProps } from "../interfaces/AuthContextProps";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
-const AuthContext = createContext<AuthContextProps | undefined>(undefined);
+interface AuthContextProps {
+  token: string | null;
+  email: string | null;  
+  signin: (token: string, email: string) => Promise<void>;
+  signout: () => Promise<void>;
+}
+
+export const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [token, setToken] = useState<string | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
 
   useEffect(() => {
     const loadToken = async () => {
       const savedToken = await AsyncStorage.getItem("access_token");
+      const savedEmail = await AsyncStorage.getItem("user_email");
       if (savedToken) {
         setToken(savedToken);
+      }
+      if (savedEmail) {
+        setEmail(savedEmail);
       }
     };
     loadToken();
   }, []);
 
-  const signin = async (newToken: string) => {
+  const signin = async (newToken: string, userEmail: string) => {
     await AsyncStorage.setItem("access_token", newToken);
+    await AsyncStorage.setItem("user_email", userEmail);
     setToken(newToken);
-    router.replace("/(tabs)/home"); 
+    setEmail(userEmail);
+    router.replace("/(tabs)/home");
   };
 
   const signout = async () => {
     await AsyncStorage.removeItem("access_token");
+    await AsyncStorage.removeItem("user_email");
     setToken(null);
-    router.replace("/(tabs)/login"); 
+    setEmail(null);
+    router.replace("/(tabs)/login");
   };
 
   return (
-    <AuthContext.Provider value={{ token, signin, signout }}>
+    <AuthContext.Provider value={{ token, email, signin, signout }}>
       {children}
     </AuthContext.Provider>
   );
-};
-
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used inside an AuthProvider");
-  }
-  return context;
 };
