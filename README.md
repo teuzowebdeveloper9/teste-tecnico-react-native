@@ -35,7 +35,8 @@ This is a full stack React Native application with a NestJS backend, designed fo
 
 ## Technical Decisions Summary
 
-- **Frontend Framework:** React Native with NativeWind for styling, chosen for rapid mobile UI development with Tailwind CSS utility classes.
+-**Frontend Framework:** React Native with NativeWind for styling, chosen for rapid mobile UI development with Tailwind CSS utility classes.
+
 - **Backend Framework:** NestJS, selected for its modular architecture and TypeScript support, enabling scalable and maintainable server-side code.
 - **Database:** PostgreSQL, a reliable and powerful relational database, managed via Prisma ORM for type-safe database access and migrations.
 - **Authentication:** JWT tokens for secure stateless authentication, with a strong 500-character secret hash for token signing.
@@ -46,6 +47,7 @@ This is a full stack React Native application with a NestJS backend, designed fo
 - **Deployment:** Docker setup provided for easy database and backend environment setup.
 - **Routing:** Bottom navigator with context-based state preservation for smooth navigation across main app screens.
 - **Dynamic Rendering:** Activities and chatbot messages are dynamically rendered based on database content and AI responses, providing a responsive user experience.
+- **API Documentation:** Swagger integrated in the backend for improved route documentation and easier API exploration.
 
 ---
 
@@ -103,13 +105,14 @@ To run the app locally, make sure you have set up the required credentials as de
    ```bash
    npm run start:dev
    ```
-Frontend
-To run the app on the web, use:
+   Frontend
+   To run the app on the web, use:
 
 ```
 npm run web
 
 ```
+
 However, it is recommended to run the app on a mobile device or emulator to properly view mobile modals and UI.
 Scripts
 To lint your code with ESLint (editing all .js, .jsx, .ts, .tsx files):
@@ -117,12 +120,15 @@ To lint your code with ESLint (editing all .js, .jsx, .ts, .tsx files):
 ```
 npm run lint
 ```
+
 To format your code with Prettier:
 
 ```
 npm run format
 ```
+
 ---
+
 ## Notes
 
 - The chatbot is tailored for Gemini AI. To use another AI, minor modifications in the chatbot folder are required.
