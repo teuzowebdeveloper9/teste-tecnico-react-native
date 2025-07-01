@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Post } from '@nestjs/common';
 import { SigninDTO } from 'DTOs/signinDTO';
 import { signupDTO } from 'DTOs/SignupDTO';
 import { AuthService } from './auth.service';
@@ -21,4 +21,8 @@ export class AuthController {
 
     return this.authService.Signin(Body)
   }
+  @Delete('delete')
+ async DeleteAccount(@Body() Data: SigninDTO) {
+  return this.authService.DeleteAccount(Data);
+}
 }

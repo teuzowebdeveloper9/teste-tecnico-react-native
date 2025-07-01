@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { signupDTO } from 'DTOs/SignupDTO';
 import { BadRequestException } from '@nestjs/common';
@@ -73,4 +73,33 @@ export class AuthService {
       acess_token
     }
   }
+  
+async DeleteAccount(Data: SigninDTO) {
+  const User = await this.prismaService.usuario.findUnique({
+    where: {
+      email: Data.email,
+    },
+  });
+
+  if (!User) {
+    throw new NotFoundException(
+      'We did not find this user. Please check your credentials.',
+    );
+  }
+
+  const isPasswordValid = await bcrypt.compare(Data.password, User.password);
+  if (!isPasswordValid) {
+    throw new ForbiddenException('The provided password is incorrect.');
+  }
+
+  await this.prismaService.usuario.delete({
+    where: {
+      email: Data.email,
+    },
+  });
+
+  return {
+    message: 'Your account has been successfully deleted.',
+  };
+}
 }
