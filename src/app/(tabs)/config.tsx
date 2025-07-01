@@ -7,6 +7,7 @@ import deleteAcount from '@/images/delete-config-acount.png'
 import exitAcount from "@/images/exitAcount.png"
 import { useContext } from "react";
 import { AuthContext } from "@/src/contexts/AuthContext";
+import { Link } from "expo-router";
 
 
 export default function Config() {
@@ -39,20 +40,24 @@ export default function Config() {
         </View>
 
         <View className="flex-row justify-between items-center w-full px-4">
-          <Text>nome : </Text>
+          <Text>nome : mateus</Text>
           <Image source={EditiconConfig} />
         </View>
 
         <View className="flex-row justify-between items-center w-full px-4">
-          <Text>email : {email}</Text>
+          <Text>email : mateussoftwaredeveloper@gmail.com</Text>
           <Image source={EditiconConfig} />
         </View>
         <View className="w-full px-4">
           <Text className="text-xl font-bold text-left">ações</Text>
         </View>
         <View className="h-[120px] w-[342px] flex-col gap-4">
-            <Text className="text-xl text-red-700 justify-center flex-row items-center"><Image source={deleteAcount} className="h-[24px] w-[24px] mt-6"/>  excluir conta </Text>
-            <Text className="text-xl text-black justify-center flex-row items-center"><Image source={exitAcount} className="h-[24px] w-[24px] mt-6"/>  excluir conta </Text>
+          <Link href={"/(tabs)/login"}>
+              <Text className="text-xl text-red-700 justify-center flex-row items-center"><Image source={deleteAcount} className="h-[24px] w-[24px] mt-6"/>  excluir conta </Text>
+          </Link>
+          <Link href={'/'}>
+             <Text className="text-xl text-black justify-center flex-row items-center"><Image source={exitAcount} className="h-[24px] w-[24px] mt-6"/>  excluir conta </Text>
+          </Link>
         </View>
 
         
