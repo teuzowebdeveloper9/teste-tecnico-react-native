@@ -5,7 +5,7 @@ import { Link } from "expo-router";
 import loadingAnimation from '../../animations/Animation - 1751313511924.json';
 import ArrowActivities from '../../images/arrowActivities.png';
 import { Activity } from "../types/ActiveType";
-
+import { useActivities } from "../contexts/ActivitiesContext";
 
 export default function Activities() {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -26,7 +26,7 @@ export default function Activities() {
       });
   }, []);
 
-  
+  const {getActivityById} = useActivities()
 
   return (
     <View className="h-[220px] w-full mr-4 bg-white border border-gray-300">
@@ -56,7 +56,7 @@ export default function Activities() {
                   <Text className="text-gray-400 font-extralight">
                     {activity.title}
                   </Text>
-                   <Pressable>
+                   <Pressable onPress={() => getActivityById(activity.id)}>
                     <Link href={"/(tabs)/EditActicity"}>
                      <Image source={ArrowActivities} className="h-[20px]" />
                     </Link>
