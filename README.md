@@ -33,6 +33,22 @@ This is a full stack React Native application with a NestJS backend, designed fo
 
 ---
 
+## Technical Decisions Summary
+
+- **Frontend Framework:** React Native with NativeWind for styling, chosen for rapid mobile UI development with Tailwind CSS utility classes.
+- **Backend Framework:** NestJS, selected for its modular architecture and TypeScript support, enabling scalable and maintainable server-side code.
+- **Database:** PostgreSQL, a reliable and powerful relational database, managed via Prisma ORM for type-safe database access and migrations.
+- **Authentication:** JWT tokens for secure stateless authentication, with a strong 500-character secret hash for token signing.
+- **State Management:** Multiple React Context Providers to manage authentication, activities data, editing state, and chatbot interactions, ensuring clean separation of concerns.
+- **Chatbot AI:** Gemini AI integrated with a detailed prompt to provide accurate health-related responses; designed to be adaptable to other AI providers with minimal changes.
+- **Validation:** Zod used for DTO validation in the backend, ensuring data integrity and type safety.
+- **Development Tools:** ESLint for linting and Prettier for code formatting to maintain code quality and consistency.
+- **Deployment:** Docker setup provided for easy database and backend environment setup.
+- **Routing:** Bottom navigator with context-based state preservation for smooth navigation across main app screens.
+- **Dynamic Rendering:** Activities and chatbot messages are dynamically rendered based on database content and AI responses, providing a responsive user experience.
+
+---
+
 ## Backend
 
 - Built with NestJS.
