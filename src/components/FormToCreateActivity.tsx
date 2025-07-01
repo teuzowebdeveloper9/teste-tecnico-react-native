@@ -6,7 +6,7 @@ import { HandleCreateActivity } from "@/src/utils/handleCreateActivity";
 import closeModalActivity from "@/images/closeModalActivity.png";
 import { useState } from "react";
 import { RegisterActivityModalProps } from "../interfaces/RegisterActivityProps";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 
 export default function RegisterActivityModal({ visible, setVisible }: RegisterActivityModalProps) {
@@ -57,20 +57,24 @@ export default function RegisterActivityModal({ visible, setVisible }: RegisterA
           </Picker>
 
           <Text className="font-semibold">Intensidade</Text>
-          <Picker
+        <Picker
             selectedValue={itensidade}
             onValueChange={setIntensidade}
             style={{ height: 50, width: 350 }}
-          >
-            <Picker.Item label="Leve" value="leve" />
-            <Picker.Item label="Média" value="media" />
-            <Picker.Item label="Pesada" value="pesada" />
-          </Picker>
+>
+           <Picker.Item label="Selecione a intensidade..." value="" enabled={false} />
+           <Picker.Item label="Leve" value="leve" />
+           <Picker.Item label="Média" value="media" />
+           <Picker.Item label="Pesada" value="pesada" />
+        </Picker>  
+
 
           <Pressable
             className="mt-4 bg-black py-2 rounded-md"
-            onPress={handleSubmit}
-          >
+             onPress={async () => {
+  await handleSubmit();
+  router.push("/(tabs)/home");
+}}>
             <Text className="text-white text-center">Registrar atividade</Text>
           </Pressable>
         </View>
