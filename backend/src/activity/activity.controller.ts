@@ -1,16 +1,18 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes } from '@nestjs/common';
 import { ActivityService } from './activity.service';
 import { CreateAcivityDTO } from 'DTOs/CreateAcivityDTO';
+import { ZodValidationPipe } from '@anatine/zod-nestjs';
+
 
 @Controller('activity')
 export class ActivityController {
   constructor(private activityService : ActivityService){}
 
-  @Post()
-  async createActivity( @Body() Data:  CreateAcivityDTO){
-      
-     return this.activityService.createActivity(Data)
-  }
+@Post()
+async createActivity(@Body() body: CreateAcivityDTO) {
+  return this.activityService.createActivity(body);
+}  
+
   @Delete(':id')
 async DeleteActivity(@Param('id') id: string) {
   return this.activityService.DeleteActivity(id);

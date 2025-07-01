@@ -56,7 +56,9 @@ export default function Activities() {
                   <Text className="text-gray-400 font-extralight">
                     {activity.title}
                   </Text>
-                  <Image source={ArrowActivities} className="h-[20px]" />
+                  <Pressable>
+                    <Image source={ArrowActivities} className="h-[20px]" />
+                  </Pressable>
                 </View>
 
                 <View className="flex-row items-center justify-between">

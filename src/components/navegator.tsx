@@ -13,7 +13,7 @@ export default function Navigator() {
   const { selectedTab, setSelectedTab } = useNavigationTab();
 
   return (
-    <View className="bg-white absolute bottom-0 border-t border-gray-200 w-screen h-[80px] justify-center items-center">
+    <View className="bg-white absolute bottom-0 border-t mb-4 border-gray-200 w-screen h-[80px] justify-center items-center">
       <View className="flex flex-row justify-around w-full">
         <Link href="/chat" asChild>
           <TouchableOpacity onPress={() => setSelectedTab('chat')}>
