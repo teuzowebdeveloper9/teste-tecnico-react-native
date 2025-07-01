@@ -76,6 +76,37 @@ This is a full stack React Native application with a NestJS backend, designed fo
 
 ---
 
+## Running the App Locally
+
+To run the app locally, make sure you have set up the required credentials as described above (API keys, JWT secret, and database URL).
+
+### Backend
+
+1. Go to the `backend` folder.
+2. Run the development server with:
+   ```bash
+   npm run start:dev
+   ```
+Frontend
+To run the app on the web, use:
+
+```
+npm run web
+
+```
+However, it is recommended to run the app on a mobile device or emulator to properly view mobile modals and UI.
+Scripts
+To lint your code with ESLint (editing all .js, .jsx, .ts, .tsx files):
+
+```
+npm run lint
+```
+To format your code with Prettier:
+
+```
+npm run format
+```
+---
 ## Notes
 
 - The chatbot is tailored for Gemini AI. To use another AI, minor modifications in the chatbot folder are required.
@@ -86,3 +117,27 @@ This is a full stack React Native application with a NestJS backend, designed fo
 ---
 
 ## Screenshots
+
+![image](https://github.com/user-attachments/assets/ca009b0a-7e55-412f-b69a-fb4837258c06)
+
+![image](https://github.com/user-attachments/assets/c36c8907-64ad-4fed-b7ea-76e00639e01b)
+
+![image](https://github.com/user-attachments/assets/cbbe5723-f00f-4ce9-9b89-1d3dfaca4d54)
+
+![image](https://github.com/user-attachments/assets/c16dd7f9-5a76-49ce-873e-946a8f37d9d0)
+
+![image](https://github.com/user-attachments/assets/ea53c1e3-55d7-47aa-9fd4-4db25528d1d5)
+
+![image](https://github.com/user-attachments/assets/b2a31b12-96d8-4213-8c96-674c74ea36c7)
+
+![image](https://github.com/user-attachments/assets/7b53f9f7-fd79-41f2-bab5-1ca58217139c)
+
+![image](https://github.com/user-attachments/assets/c5e2f10f-c7f5-465c-8b75-4b74a8ed5124)
+
+![image](https://github.com/user-attachments/assets/fd874bc0-c383-4eb4-96c8-bf7e7f4cfce8)
+
+![image](https://github.com/user-attachments/assets/6bfdae01-fe28-4346-901f-10d22adcf4ff)
+
+![image](https://github.com/user-attachments/assets/9f50364e-fbf9-4ca6-aa0e-b7d8ec602f46)
+
+![image](https://github.com/user-attachments/assets/abe41c19-4b4d-493c-89a0-268c94f9130c)
