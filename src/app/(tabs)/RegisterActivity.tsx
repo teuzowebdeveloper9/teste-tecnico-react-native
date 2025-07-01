@@ -8,6 +8,7 @@ import { useState } from 'react';
 import closeModalActivity from '../../../images/closeModalActivity.png'
 import { Picker } from '@react-native-picker/picker';
 import { HandleCreateActivity } from '@/src/utils/handleCreateActivity';
+import GenericActivitys from '@/src/components/GenericActivitys';
 
 
 export default function RegisterActivity() {
@@ -21,49 +22,7 @@ export default function RegisterActivity() {
 
   return (
     <NavigationProvider>
-      <View className="h-screen flex p-4 mb-[200px] w-screen bg-white">
-        <HomeHeader />
-
-        <View className="flex rounded-sm flex-1">
-          <RegisterComponent max={30} />
-
-          <Text className="flex-row ml-2 text-black font-semibold ">
-            Últimas atividades registradas
-          </Text>
-
-          <View className="flex border-b border-gray-300 justify-between w-full">
-            <View className="max-h-[200px]">
-              <ScrollView>
-                {activities.map((activity) => (
-                  <View
-                    key={activity.id}
-                    className="flex-row justify-between gap-4 p-2"
-                  >
-                    <View className="flex-col items-start">
-                      <Text className="text-xs text-gray-400">Nome</Text>
-                      <Text className="text-base font-semibold text-black">
-                        {activity.title}
-                      </Text>
-                    </View>
-
-                    <View className="flex-col items-start">
-                      <Text className="text-xs text-gray-400">Intensidade</Text>
-                      <Text className="text-base font-semibold text-black">
-                        {activity.intensity}
-                      </Text>
-                    </View>
-
-                    <View className="flex-col items-start">
-                      <Text className="text-xs text-gray-400">Duração</Text>
-                      <Text className="text-base font-semibold text-black">
-                        {activity.durationInMinutes} min
-                      </Text>
-                    </View>
-                  </View>
-                ))}
-              </ScrollView>
-            </View>
-
+        <GenericActivitys />
             <Pressable onPress={() => setVisible(true)} className="w-full bg-black rounded-sm h-[30px]  flex items-center justify-center">
               <Text className="text-white font-semibold">Registrar Atividade</Text>
             </Pressable>
@@ -155,11 +114,6 @@ export default function RegisterActivity() {
         </View>
       </View>
     </Modal>
- 
-          </View>
-        </View>
-        <Navigator />
-      </View>
     </NavigationProvider>
   );
 }

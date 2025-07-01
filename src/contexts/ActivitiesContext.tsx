@@ -8,6 +8,8 @@ const ActivityContext = createContext<ActivityContextProps | undefined>(undefine
 
 export const ActivitiesProvider = ({ children }: { children: React.ReactNode }) => {
   const [activities, setActivities] = useState<Activity[]>([]);
+  const [activity, setActivity] = useState<Activity | null>(null);
+
 
   useEffect(() => {
     fetch("http://localhost:3333/activity/")

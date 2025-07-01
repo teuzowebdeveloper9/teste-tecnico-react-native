@@ -25,6 +25,11 @@ async DeleteActivity(@Param('id') id: string) {
     async EditActivitys(id: string, activity: CreateAcivityDTO){
      return this.activityService.EditAcitivity(id, activity);
   }
+  @Get(':id')
+  async getActivityById(@Param('id') id: string){
+    return this.activityService.getActivityById(id);
+  }
+  
   @Put(':id')
   async EditAcitivity(@Param('id')id: string , @Body()  activity: CreateAcivityDTO ){
     return this.activityService.EditAcitivity(id, activity);

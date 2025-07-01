@@ -56,9 +56,12 @@ export default function Activities() {
                   <Text className="text-gray-400 font-extralight">
                     {activity.title}
                   </Text>
-                  <Pressable>
-                    <Image source={ArrowActivities} className="h-[20px]" />
-                  </Pressable>
+                   <Pressable>
+                    <Link href={"/(tabs)/EditActicity"}>
+                     <Image source={ArrowActivities} className="h-[20px]" />
+                    </Link>
+                   </Pressable>
+                
                 </View>
 
                 <View className="flex-row items-center justify-between">

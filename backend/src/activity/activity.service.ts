@@ -52,7 +52,13 @@ export class ActivityService {
      })      
       return updatedActivity
    }
+   async getActivityById(id: string){
+     const searchedActivity = await this.prismaService.activity.findUnique({
+      where : {id}
+     })
 
+     return searchedActivity
+   }
 
 
 }
