@@ -10,6 +10,7 @@ export class ActivityController {
   constructor(private activityService : ActivityService){}
 
 @Post()
+@ApiOperation({summary: 'This route is responsible for creating a new activity'})
 async createActivity(@Body() body: CreateAcivityDTO) {
   return this.activityService.createActivity(body);
 }  
